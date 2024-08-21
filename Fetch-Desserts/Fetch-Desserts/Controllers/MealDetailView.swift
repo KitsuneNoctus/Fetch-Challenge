@@ -9,7 +9,28 @@ import SwiftUI
 
 struct MealDetailView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView {
+            VStack(alignment: .leading) {
+                AsyncImage(url: URL(string: "https://www.themealdb.com/images/media/meals/sywswr1511383814.jpg")) { image in
+                    image
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxWidth: .infinity)
+                } placeholder: {
+                    ProgressView()
+                }
+                HStack {
+                    Text("Tags")
+                    Spacer()
+                    Text("Area")
+                }
+                Text("Video")
+                Text("Ingredients")
+                Text("Instructions")
+                Text("Source")
+            }
+        }
+        .navigationTitle("Banana Pancakes")
     }
 }
 

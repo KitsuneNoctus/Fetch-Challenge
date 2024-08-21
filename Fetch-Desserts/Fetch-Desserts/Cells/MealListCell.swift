@@ -7,12 +7,29 @@
 
 import SwiftUI
 
-struct FoodItemListCell: View {
+struct MealListCell: View {
+    
+//    var
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            AsyncImage(url: URL(string: "https://www.themealdb.com/images/media/meals/rpvptu1511641092.jpg")) { image in
+                image
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 100)
+                    .clipShape(Circle())
+            } placeholder: {
+                ProgressView()
+            }
+            Text("Blackberry Fool")
+                .font(.title)
+                .bold()
+        }
+        .padding()
     }
 }
 
 #Preview {
-    FoodItemListCell()
+    MealListCell()
 }
