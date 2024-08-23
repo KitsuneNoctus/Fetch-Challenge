@@ -4,6 +4,7 @@ Build a native iOS App that uses the [TheMealDB](https://themealdb.com/api.php) 
 ## Endpoints
 * Fetch list of meals in Dessert category: https://themealdb.com/api/json/v1/1/filter.php?c=Dessert
 * Fetch meal details: https://themealdb.com/api/json/v1/1/lookup.php?i=[MEAL_ID]
+* BONUS: Give option to choose other Categories: https://www.themealdb.com/api/json/v1/1/categories.php
 
 ## Goal
 User should see a list of the Dessert category items sorted alphabetically. When a user selects a meal they should see:
