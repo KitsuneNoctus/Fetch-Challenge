@@ -9,11 +9,11 @@ import SwiftUI
 
 struct MealListCell: View {
     
-//    var
+    @State var mealModel: MealModel!
     
     var body: some View {
         HStack {
-            AsyncImage(url: URL(string: "https://www.themealdb.com/images/media/meals/rpvptu1511641092.jpg")) { image in
+            AsyncImage(url: URL(string: mealModel.strMealThumb)) { image in
                 image
                     .resizable()
                     .scaledToFit()
@@ -22,14 +22,15 @@ struct MealListCell: View {
             } placeholder: {
                 ProgressView()
             }
-            Text("Blackberry Fool")
+            Text(mealModel.strMeal)
                 .font(.title)
                 .bold()
+                .foregroundStyle(.black)
         }
         .padding()
     }
 }
 
 #Preview {
-    MealListCell()
+    MealListCell(mealModel: MealModel(strMeal: "Sticky Toffee Pudding", strMealThumb: "https://www.themealdb.com/images/media/meals/xqqqtu1511637379.jpg", idMeal:     "52883"))
 }

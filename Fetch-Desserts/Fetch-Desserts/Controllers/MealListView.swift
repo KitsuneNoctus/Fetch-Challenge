@@ -9,22 +9,29 @@ import SwiftUI
 
 struct MealListView: View {
     
-    let basicMealList: [MealModel] = [
-        MealModel(strMeal: "Apam balik", strMealThumb: "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg", idMeal: "1"),
-        MealModel(strMeal: "Apple & Blackberry Crumble", strMealThumb: "https://www.themealdb.com/images/media/meals/xvsurr1511719182.jpg", idMeal: "2"),
-        MealModel(strMeal: "Apple Frangipan Tart", strMealThumb: "https://www.themealdb.com/images/media/meals/wxywrq1468235067.jpg", idMeal: "3")
-    ]
+    @StateObject private var mealListViewModel: MealListViewModel = MealListViewModel()
     
     var body: some View {
         NavigationStack {
-//            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-//                .font(.title)
-            List(basicMealList, id: \.idMeal) { meal in
-                NavigationLink(destination: MealDetailView()) {
-                    MealListCell()
+            ScrollView {
+                VStack(alignment: .leading) {
+                    ForEach(mealListViewModel.meals, id: \.idMeal) { meal in
+                        NavigationLink(destination: MealDetailView()) {
+                            MealListCell(mealModel: meal)
+                        }
+                    }
                 }
+                .padding(5)
             }
             .navigationTitle("Desserts")
+        }.onAppear {
+            let url = URL(string: "https://themealdb.com/api/json/v1/1/filter.php?c=Dessert")!
+            WebService().getMeals(url: url) { meals in
+                guard let meals = meals else {
+                    return
+                }
+                mealListViewModel.meals.append(contentsOf: meals)
+            }
         }
     }
 }
