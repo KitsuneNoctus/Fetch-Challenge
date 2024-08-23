@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MealDetailModel {
+struct MealDetailModel: Decodable {
     let strMeal: String
     let strArea: String
     let strInstructions: String
