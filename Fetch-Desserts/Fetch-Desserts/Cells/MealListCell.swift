@@ -22,10 +22,14 @@ struct MealListCell: View {
             } placeholder: {
                 ProgressView()
             }
-            Text(mealModel.strMeal)
-                .font(.title)
-                .bold()
-                .foregroundStyle(.black)
+            VStack(alignment: .leading) {
+                Text(mealModel.strMeal)
+                    .font(.title)
+                    .bold()
+                    .foregroundStyle(.black)
+            }
+            .frame(maxWidth: .infinity)
+            
         }
         .padding()
     }
