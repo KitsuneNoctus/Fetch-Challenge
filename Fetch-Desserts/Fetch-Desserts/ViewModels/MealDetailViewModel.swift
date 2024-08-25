@@ -8,7 +8,7 @@
 import Foundation
 
 class MealDetailViewModel: ObservableObject {
-    @Published var mealDetails: MealDetailModel? = nil
+    @Published var mealDetails: [MealDetailModel] = []
 }
 
 extension MealDetailViewModel {
@@ -16,15 +16,15 @@ extension MealDetailViewModel {
         let mealDetailURL = URL(string: "https://themealdb.com/api/json/v1/1/lookup.php?i=\(mealID)")!
         print("https://themealdb.com/api/json/v1/1/lookup.php?i=\(mealID)")
         
-        let mealResource = Resource<MealDetailModel>(url: mealDetailURL) { data in
-            let mealResource = try? JSONDecoder().decode(MealDetailModel.self, from: data)
+        let mealResource = Resource<MealDetailListModel>(url: mealDetailURL) { data in
+            let mealResource = try? JSONDecoder().decode(MealDetailListModel.self, from: data)
             return mealResource
         }
         
         WebService().load(resource: mealResource) { result in
             if let mealDetails = result {
                 DispatchQueue.main.async { [weak self] in
-                    self?.mealDetails = mealDetails
+                    self?.mealDetails = mealDetails.meals
                 }
             }
             else {

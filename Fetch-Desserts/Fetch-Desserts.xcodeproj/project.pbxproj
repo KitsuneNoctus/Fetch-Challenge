@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA67C1822C7A877100D289C0 /* MealDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA67C1812C7A877100D289C0 /* MealDetails.swift */; };
 		BA6D80772C76945F00D1D6F5 /* Fetch_DessertsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6D80762C76945F00D1D6F5 /* Fetch_DessertsApp.swift */; };
 		BA6D807B2C76946200D1D6F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA6D807A2C76946200D1D6F5 /* Assets.xcassets */; };
 		BA6D807E2C76946200D1D6F5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA6D807D2C76946200D1D6F5 /* Preview Assets.xcassets */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BA67C1812C7A877100D289C0 /* MealDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetails.swift; sourceTree = "<group>"; };
 		BA6D80732C76945F00D1D6F5 /* Fetch-Desserts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fetch-Desserts.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA6D80762C76945F00D1D6F5 /* Fetch_DessertsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetch_DessertsApp.swift; sourceTree = "<group>"; };
 		BA6D807A2C76946200D1D6F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 			children = (
 				BA6D808D2C76975200D1D6F5 /* MealListView.swift */,
 				BA6D808F2C76983F00D1D6F5 /* MealDetailView.swift */,
+				BA67C1812C7A877100D289C0 /* MealDetails.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 				BA6D808A2C7696F500D1D6F5 /* WebService.swift in Sources */,
 				BA6D80772C76945F00D1D6F5 /* Fetch_DessertsApp.swift in Sources */,
 				BA6D80902C76983F00D1D6F5 /* MealDetailView.swift in Sources */,
+				BA67C1822C7A877100D289C0 /* MealDetails.swift in Sources */,
 				BA6D80982C7698D300D1D6F5 /* MealDetailModel.swift in Sources */,
 				BA6D808E2C76975200D1D6F5 /* MealListView.swift in Sources */,
 				BA6D80962C7698C500D1D6F5 /* MealModel.swift in Sources */,

@@ -8,95 +8,115 @@
 import SwiftUI
 
 struct MealDetailView: View {
+    
+    @StateObject private var mealDetailViewModel: MealDetailViewModel = MealDetailViewModel()
+    @State var mealID: String
+    
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading) {
-                AsyncImage(url: URL(string: "https://www.themealdb.com/images/media/meals/sywswr1511383814.jpg")) { image in
-                    image
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth: .infinity)
-                } placeholder: {
-                    ProgressView()
-                }
-                HStack {
-                    Text("Tags: \(exampleMealDetailModel.strTags)")
-                    Spacer()
-                    Text(exampleMealDetailModel.strArea)
-                }
-                .padding(5)
-                Text("Video")
-                    .padding(5)
-                Text("Ingredients")
-                    .font(.title3)
-                    .padding(5)
-                
-                HStack {
-                    Text(("\u{2022}"))
-                    Text(exampleMealDetailModel.strMeasure1!)
-                    Text(exampleMealDetailModel.strIngredient1!)
-                }
-                .padding(.horizontal, 5)
-                HStack {
-                    Text(("\u{2022}"))
-                    Text(exampleMealDetailModel.strMeasure2!)
-                    Text(exampleMealDetailModel.strIngredient2!)
-                }
-                .padding(.horizontal, 5)
-                HStack {
-                    Text(("\u{2022}"))
-                    Text(exampleMealDetailModel.strMeasure3!)
-                    Text(exampleMealDetailModel.strIngredient3!)
-                }
-                .padding(.horizontal, 5)
-                HStack {
-                    Text(("\u{2022}"))
-                    Text(exampleMealDetailModel.strMeasure4!)
-                    Text(exampleMealDetailModel.strIngredient4!)
-                }
-                .padding(.horizontal, 5)
-                HStack {
-                    Text(("\u{2022}"))
-                    Text(exampleMealDetailModel.strMeasure5!)
-                    Text(exampleMealDetailModel.strIngredient5!)
-                }
-                .padding(.horizontal, 5)
-                HStack {
-                    Text(("\u{2022}"))
-                    Text(exampleMealDetailModel.strMeasure6!)
-                    Text(exampleMealDetailModel.strIngredient6!)
-                }
-                .padding(.horizontal, 5)
-                HStack {
-                    Text(("\u{2022}"))
-                    Text(exampleMealDetailModel.strMeasure7!)
-                    Text(exampleMealDetailModel.strIngredient7!)
-                }
-                .padding(.horizontal, 5)
-                if exampleMealDetailModel.strIngredient8 != "" {
-                    HStack {
-                        Text(("\u{2022}"))
-                        Text("Amount")
-                        Text("Ingredient")
-                    }
-                    .padding(.horizontal, 5)
-                }
-                
-                
-                
-                Text("Instructions")
-                    .font(.title3)
-                    .padding(5)
-                Text(exampleMealDetailModel.strInstructions)
-                    .padding()
-                Text("Source")
-                    .padding()
-            }
+        
+        VStack {
+//            mealDetailViewModel.mealDetails
+//            MealDetails(mealDetailModel: mealDetailViewModel.mealDetails)
+            Text(mealDetailViewModel.mealDetails.first?.strArea ?? "Nope")
         }
-        .navigationTitle("Banana Pancakes")
+        .onAppear {
+            mealDetailViewModel.fetchMealDetails(for: mealID)
+        }
+        
+//        ScrollView {
+//            VStack(alignment: .leading) {
+////                AsyncImage(url: URL(string: mealDetailViewModel.mealDetails!.strMealThumb)) { image in
+////                    image
+////                        .resizable()
+////                        .scaledToFit()
+////                        .frame(maxWidth: .infinity)
+////                } placeholder: {
+////                    ProgressView()
+////                }
+//                HStack {
+//                    Text("Tags: \(mealDetailViewModel.mealDetails?.strTags)")
+//                    Spacer()
+//                    Text(mealDetailViewModel.mealDetails?.strArea ?? "Area")
+//                }
+//                .padding(5)
+//                Text("Video")
+//                    .padding(5)
+//                Text("Ingredients")
+//                    .font(.title3)
+//                    .padding(5)
+//                
+////                HStack {
+////                    Text(("\u{2022}"))
+////                    Text(mealDetailViewModel.mealDetails.strMeasure1!)
+////                    Text(mealDetailViewModel.mealDetails.strIngredient1!)
+////                }
+////                .padding(.horizontal, 5)
+////                HStack {
+////                    Text(("\u{2022}"))
+////                    Text(mealDetailViewModel.mealDetails.strMeasure2!)
+////                    Text(mealDetailViewModel.mealDetails.strIngredient2!)
+////                }
+////                .padding(.horizontal, 5)
+////                HStack {
+////                    Text(("\u{2022}"))
+////                    Text(mealDetailViewModel.mealDetails.strMeasure3!)
+////                    Text(mealDetailViewModel.mealDetails.strIngredient3!)
+////                }
+////                .padding(.horizontal, 5)
+////                HStack {
+////                    Text(("\u{2022}"))
+////                    Text(mealDetailViewModel.mealDetails.strMeasure4!)
+////                    Text(mealDetailViewModel.mealDetails.strIngredient4!)
+////                }
+////                .padding(.horizontal, 5)
+////                HStack {
+////                    Text(("\u{2022}"))
+////                    Text(mealDetailViewModel.mealDetails.strMeasure5!)
+////                    Text(mealDetailViewModel.mealDetails.strIngredient5!)
+////                }
+////                .padding(.horizontal, 5)
+////                HStack {
+////                    Text(("\u{2022}"))
+////                    Text(mealDetailViewModel.mealDetails.strMeasure6!)
+////                    Text(mealDetailViewModel.mealDetails.strIngredient6!)
+////                }
+////                .padding(.horizontal, 5)
+////                HStack {
+////                    Text(("\u{2022}"))
+////                    Text(mealDetailViewModel.mealDetails.strMeasure7!)
+////                    Text(mealDetailViewModel.mealDetails.strIngredient7!)
+////                }
+////                .padding(.horizontal, 5)
+////                if mealDetailViewModel.mealDetails.strIngredient8 != "" {
+////                    HStack {
+////                        Text(("\u{2022}"))
+////                        Text("Amount")
+////                        Text("Ingredient")
+////                    }
+////                    .padding(.horizontal, 5)
+////                }
+////                
+////                
+////                
+////                Text("Instructions")
+////                    .font(.title3)
+////                    .padding(5)
+////                Text(mealDetailViewModel.mealDetails.strInstructions)
+////                    .padding()
+////                
+////                Link(destination: URL(string: mealDetailViewModel.mealDetails.strSource ?? "")!, label: {
+////                    Text("Source")
+////                        .padding()
+////                })
+//            }
+//        }
+//        .navigationTitle("Banana Pancakes")
+//        .onAppear {
+//            mealDetailViewModel.fetchMealDetails(for: mealID)
+//        }
     }
 }
 
-#Preview {
-    MealDetailView()
-}
+//#Preview {
+//    MealDetailView()
+//}

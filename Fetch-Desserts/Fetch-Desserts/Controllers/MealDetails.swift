@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct MealDetails: View {
+    
+    @State var mealDetailModel: MealDetailModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text(mealDetailModel.strMeal ?? "Value")
     }
 }
 
-#Preview {
-    MealDetails()
-}
+//#Preview {
+//    MealDetails()
+//}
