@@ -13,107 +13,57 @@ struct MealDetailView: View {
     @State var mealID: String
     
     var body: some View {
-        
-        VStack {
-//            mealDetailViewModel.mealDetails
-//            MealDetails(mealDetailModel: mealDetailViewModel.mealDetails)
-            Text(mealDetailViewModel.mealDetails.first?.strArea ?? "Nope")
+        ScrollView {
+            VStack(alignment: .leading) {
+                if let thumbStringURL = mealDetailViewModel.mealDetails.first?.strMealThumb  {
+                    AsyncImage(url: URL(string: thumbStringURL)) { image in
+                        image
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth: .infinity)
+                    } placeholder: {
+                        ProgressView()
+                    }
+                }
+                Text(mealDetailViewModel.mealDetails.first?.strMeal ?? "Title")
+                    .font(.largeTitle)
+                    .bold()
+                    .padding(.horizontal, 5)
+                HStack {
+                    Text("Tags: \(mealDetailViewModel.mealDetails.first?.strTags)")
+                        .font(.caption)
+                    Spacer()
+                    Text(mealDetailViewModel.mealDetails.first?.strArea ?? "Area")
+                        .font(.caption)
+                }
+                .padding(5)
+                Text("Video")
+                    .padding(5)
+                Text("Ingredients")
+                    .font(.title3)
+                    .padding(5)
+                MealInstructions(strMeasure1: mealDetailViewModel.mealDetails.first?.strMeasure1, strMeasure2: mealDetailViewModel.mealDetails.first?.strMeasure2, strMeasure3: mealDetailViewModel.mealDetails.first?.strMeasure3, strMeasure4: mealDetailViewModel.mealDetails.first?.strMeasure4, strMeasure5: mealDetailViewModel.mealDetails.first?.strMeasure5, strMeasure6: mealDetailViewModel.mealDetails.first?.strMeasure6, strMeasure7: mealDetailViewModel.mealDetails.first?.strMeasure7, strMeasure8: mealDetailViewModel.mealDetails.first?.strMeasure8, strMeasure9: mealDetailViewModel.mealDetails.first?.strMeasure9, strMeasure10: mealDetailViewModel.mealDetails.first?.strMeasure10, strMeasure11: mealDetailViewModel.mealDetails.first?.strMeasure11, strMeasure12: mealDetailViewModel.mealDetails.first?.strMeasure12, strMeasure13: mealDetailViewModel.mealDetails.first?.strMeasure13, strMeasure14: mealDetailViewModel.mealDetails.first?.strMeasure14, strMeasure15: mealDetailViewModel.mealDetails.first?.strMeasure15, strMeasure16: mealDetailViewModel.mealDetails.first?.strMeasure16, strMeasure17: mealDetailViewModel.mealDetails.first?.strMeasure17, strMeasure18: mealDetailViewModel.mealDetails.first?.strMeasure18, strMeasure19: mealDetailViewModel.mealDetails.first?.strMeasure19, strMeasure20: mealDetailViewModel.mealDetails.first?.strMeasure20,
+                    strIngredient1: mealDetailViewModel.mealDetails.first?.strIngredient1, strIngredient2: mealDetailViewModel.mealDetails.first?.strIngredient2, strIngredient3: mealDetailViewModel.mealDetails.first?.strIngredient3, strIngredient4: mealDetailViewModel.mealDetails.first?.strIngredient4,strIngredient5: mealDetailViewModel.mealDetails.first?.strIngredient5, strIngredient6: mealDetailViewModel.mealDetails.first?.strIngredient6, strIngredient7: mealDetailViewModel.mealDetails.first?.strIngredient7, strIngredient8: mealDetailViewModel.mealDetails.first?.strIngredient8, strIngredient9: mealDetailViewModel.mealDetails.first?.strIngredient9, strIngredient10: mealDetailViewModel.mealDetails.first?.strIngredient10, strIngredient11: mealDetailViewModel.mealDetails.first?.strIngredient11, strIngredient12: mealDetailViewModel.mealDetails.first?.strIngredient12, strIngredient13: mealDetailViewModel.mealDetails.first?.strIngredient13, strIngredient14: mealDetailViewModel.mealDetails.first?.strIngredient14, strIngredient15: mealDetailViewModel.mealDetails.first?.strIngredient15, strIngredient16: mealDetailViewModel.mealDetails.first?.strIngredient16, strIngredient17: mealDetailViewModel.mealDetails.first?.strIngredient17, strIngredient18: mealDetailViewModel.mealDetails.first?.strIngredient18, strIngredient19: mealDetailViewModel.mealDetails.first?.strIngredient19, strIngredient20: mealDetailViewModel.mealDetails.first?.strIngredient20)
+                Text("Instructions")
+                    .font(.title3)
+                    .padding(5)
+                Text(mealDetailViewModel.mealDetails.first?.strInstructions ?? "No Instructions Provided...")
+                    .padding(5)
+             
+                if let mealSourceLink = mealDetailViewModel.mealDetails.first?.strSource {
+                    Link(destination: URL(string: mealSourceLink)!, label: {
+                        Text("Source")
+                            .padding(5)
+                    })
+                }
+            }
         }
+        .ignoresSafeArea(edges: .top)
+//        .navigationBarBackButtonHidden()
+//        .navigationTitle("Banana Pancakes")
         .onAppear {
             mealDetailViewModel.fetchMealDetails(for: mealID)
         }
-        
-//        ScrollView {
-//            VStack(alignment: .leading) {
-////                AsyncImage(url: URL(string: mealDetailViewModel.mealDetails!.strMealThumb)) { image in
-////                    image
-////                        .resizable()
-////                        .scaledToFit()
-////                        .frame(maxWidth: .infinity)
-////                } placeholder: {
-////                    ProgressView()
-////                }
-//                HStack {
-//                    Text("Tags: \(mealDetailViewModel.mealDetails?.strTags)")
-//                    Spacer()
-//                    Text(mealDetailViewModel.mealDetails?.strArea ?? "Area")
-//                }
-//                .padding(5)
-//                Text("Video")
-//                    .padding(5)
-//                Text("Ingredients")
-//                    .font(.title3)
-//                    .padding(5)
-//                
-////                HStack {
-////                    Text(("\u{2022}"))
-////                    Text(mealDetailViewModel.mealDetails.strMeasure1!)
-////                    Text(mealDetailViewModel.mealDetails.strIngredient1!)
-////                }
-////                .padding(.horizontal, 5)
-////                HStack {
-////                    Text(("\u{2022}"))
-////                    Text(mealDetailViewModel.mealDetails.strMeasure2!)
-////                    Text(mealDetailViewModel.mealDetails.strIngredient2!)
-////                }
-////                .padding(.horizontal, 5)
-////                HStack {
-////                    Text(("\u{2022}"))
-////                    Text(mealDetailViewModel.mealDetails.strMeasure3!)
-////                    Text(mealDetailViewModel.mealDetails.strIngredient3!)
-////                }
-////                .padding(.horizontal, 5)
-////                HStack {
-////                    Text(("\u{2022}"))
-////                    Text(mealDetailViewModel.mealDetails.strMeasure4!)
-////                    Text(mealDetailViewModel.mealDetails.strIngredient4!)
-////                }
-////                .padding(.horizontal, 5)
-////                HStack {
-////                    Text(("\u{2022}"))
-////                    Text(mealDetailViewModel.mealDetails.strMeasure5!)
-////                    Text(mealDetailViewModel.mealDetails.strIngredient5!)
-////                }
-////                .padding(.horizontal, 5)
-////                HStack {
-////                    Text(("\u{2022}"))
-////                    Text(mealDetailViewModel.mealDetails.strMeasure6!)
-////                    Text(mealDetailViewModel.mealDetails.strIngredient6!)
-////                }
-////                .padding(.horizontal, 5)
-////                HStack {
-////                    Text(("\u{2022}"))
-////                    Text(mealDetailViewModel.mealDetails.strMeasure7!)
-////                    Text(mealDetailViewModel.mealDetails.strIngredient7!)
-////                }
-////                .padding(.horizontal, 5)
-////                if mealDetailViewModel.mealDetails.strIngredient8 != "" {
-////                    HStack {
-////                        Text(("\u{2022}"))
-////                        Text("Amount")
-////                        Text("Ingredient")
-////                    }
-////                    .padding(.horizontal, 5)
-////                }
-////                
-////                
-////                
-////                Text("Instructions")
-////                    .font(.title3)
-////                    .padding(5)
-////                Text(mealDetailViewModel.mealDetails.strInstructions)
-////                    .padding()
-////                
-////                Link(destination: URL(string: mealDetailViewModel.mealDetails.strSource ?? "")!, label: {
-////                    Text("Source")
-////                        .padding()
-////                })
-//            }
-//        }
-//        .navigationTitle("Banana Pancakes")
-//        .onAppear {
-//            mealDetailViewModel.fetchMealDetails(for: mealID)
-//        }
     }
 }
 
