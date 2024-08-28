@@ -14,7 +14,6 @@ class MealDetailViewModel: ObservableObject {
 extension MealDetailViewModel {
     func fetchMealDetails(for mealID: String) {
         let mealDetailURL = URL(string: "https://themealdb.com/api/json/v1/1/lookup.php?i=\(mealID)")!
-        print("https://themealdb.com/api/json/v1/1/lookup.php?i=\(mealID)")
         
         let mealResource = Resource<MealDetailListModel>(url: mealDetailURL) { data in
             let mealResource = try? JSONDecoder().decode(MealDetailListModel.self, from: data)
@@ -26,9 +25,6 @@ extension MealDetailViewModel {
                 DispatchQueue.main.async { [weak self] in
                     self?.mealDetails = mealDetails.meals
                 }
-            }
-            else {
-                print("getting nil")
             }
         }
     }
