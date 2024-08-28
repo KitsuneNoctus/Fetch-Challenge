@@ -17,6 +17,7 @@ struct MealDetailView: View {
     
     var body: some View {
         ZStack {
+            //MARK: Main Body of Display
             ScrollView {
                 VStack(alignment: .leading) {
                     if let thumbStringURL = mealDetailViewModel.mealDetails.first?.strMealThumb  {
@@ -38,17 +39,15 @@ struct MealDetailView: View {
                             Text("Tags: \(tags)")
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
+                            Spacer()
                         }
-                        Spacer()
                         if let area = mealDetailViewModel.mealDetails.first?.strArea {
-                            Text(area)
+                            Text("Area: \(area)")
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
                         }
                     }
                     .padding(.horizontal, 5)
-                    Text("Video")
-                        .padding(5)
                     Text("Ingredients")
                         .font(.title3)
                         .bold()
@@ -58,18 +57,20 @@ struct MealDetailView: View {
                     Text("Instructions")
                         .font(.title3)
                         .bold()
-                        .padding(5)
+                        .padding([.horizontal, .top], 5)
                     Text(mealDetailViewModel.mealDetails.first?.strInstructions ?? "No Instructions Provided...")
                         .padding(5)
                     
                     if let mealSourceLink = mealDetailViewModel.mealDetails.first?.strSource {
                         Link(destination: URL(string: mealSourceLink)!, label: {
                             Text("Source")
+                                .frame(maxWidth: .infinity)
                                 .padding(5)
                         })
                     }
                 }
             }
+            //MARK: Navigation and Video Button Overlay
             VStack(alignment: .leading) {
                 HStack {
                     Button {
@@ -79,11 +80,23 @@ struct MealDetailView: View {
                             .padding()
                             .foregroundStyle(.black)
                     }
-                    .background(Color.gray.opacity(0.5))
+                    .background(Color.white.opacity(0.5))
                     .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
                     .padding(.top, 40)
                     .padding(.horizontal, 20)
                     Spacer()
+                    
+                    if let mealSourceLink = mealDetailViewModel.mealDetails.first?.strYoutube {
+                        Link(destination: URL(string: mealSourceLink)!, label: {
+                            Image(systemName: "play.rectangle")
+                                .padding()
+                                .foregroundStyle(.black)
+                        })
+                        .background(Color.white.opacity(0.6))
+                        .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                        .padding(.top, 40)
+                        .padding(.horizontal, 20)
+                    }
                 }
                 Spacer()
             }
@@ -97,6 +110,6 @@ struct MealDetailView: View {
     }
 }
 
-//#Preview {
-//    MealDetailView()
-//}
+#Preview {
+    MealDetailView(mealID: "52894")
+}
