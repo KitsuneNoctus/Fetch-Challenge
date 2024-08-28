@@ -64,7 +64,11 @@ struct MealDetailView: View {
                     if let mealSourceLink = mealDetailViewModel.mealDetails.first?.strSource {
                         Link(destination: URL(string: mealSourceLink)!, label: {
                             Text("Source")
+                                .foregroundStyle(.white)
+                                .frame(height: 50)
                                 .frame(maxWidth: .infinity)
+                                .background(.gray.opacity(0.6))
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
                                 .padding(5)
                         })
                     }
