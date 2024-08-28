@@ -18,7 +18,7 @@ struct MealDetailModel: Decodable {
     let strInstructions: String
     let strMealThumb: String
     let strTags: String?
-    let strYouTube: String?
+    let strYoutube: String?
     let strIngredient1: String?
     let strIngredient2: String?
     let strIngredient3: String?
