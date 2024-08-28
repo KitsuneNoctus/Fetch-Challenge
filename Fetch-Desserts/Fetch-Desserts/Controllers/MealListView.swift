@@ -11,13 +11,11 @@ struct MealListView: View {
     
     @StateObject private var mealListViewModel: MealListViewModel = MealListViewModel()
     
-    @State private var searchText = ""
-    
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading) {
-                    ForEach(searchResults, id: \.idMeal) { meal in
+                    ForEach(mealListViewModel.meals, id: \.idMeal) { meal in
                         NavigationLink(destination: MealDetailView(mealID: meal.idMeal)) {
                             MealListCell(mealModel: meal)
                         }
@@ -27,19 +25,8 @@ struct MealListView: View {
             }
             .navigationTitle("Desserts")
         }
-        .searchable(text: $searchText)
         .onAppear {
             mealListViewModel.fetchMeals()
-        }
-    }
-    
-    var searchResults: [MealModel] {
-        if searchText.isEmpty {
-            return mealListViewModel.meals
-        } else {
-            return mealListViewModel.meals.filter {
-                $0.strMeal.lowercased().contains(searchText.lowercased())
-            }
         }
     }
 }
