@@ -10,6 +10,9 @@ import SwiftUI
 struct MealDetailView: View {
     
     @StateObject private var mealDetailViewModel: MealDetailViewModel = MealDetailViewModel()
+    
+    @Environment(\.dismiss) var dismiss
+    
     @State var mealID: String
     
     var body: some View {
