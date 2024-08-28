@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		BA546DAE2C7D5005006608C4 /* MealInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA546DAD2C7D5005006608C4 /* MealInstructions.swift */; };
+		BA546DB02C7EA428006608C4 /* MealTypeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA546DAF2C7EA428006608C4 /* MealTypeSelector.swift */; };
+		BA546DB22C7ED4FF006608C4 /* MealTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA546DB12C7ED4FF006608C4 /* MealTypeViewModel.swift */; };
+		BA546DB42C7ED571006608C4 /* MealTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA546DB32C7ED571006608C4 /* MealTypeModel.swift */; };
 		BA6D80772C76945F00D1D6F5 /* Fetch_DessertsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6D80762C76945F00D1D6F5 /* Fetch_DessertsApp.swift */; };
 		BA6D807B2C76946200D1D6F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA6D807A2C76946200D1D6F5 /* Assets.xcassets */; };
 		BA6D807E2C76946200D1D6F5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA6D807D2C76946200D1D6F5 /* Preview Assets.xcassets */; };
@@ -23,6 +26,9 @@
 
 /* Begin PBXFileReference section */
 		BA546DAD2C7D5005006608C4 /* MealInstructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealInstructions.swift; sourceTree = "<group>"; };
+		BA546DAF2C7EA428006608C4 /* MealTypeSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTypeSelector.swift; sourceTree = "<group>"; };
+		BA546DB12C7ED4FF006608C4 /* MealTypeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTypeViewModel.swift; sourceTree = "<group>"; };
+		BA546DB32C7ED571006608C4 /* MealTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTypeModel.swift; sourceTree = "<group>"; };
 		BA6D80732C76945F00D1D6F5 /* Fetch-Desserts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fetch-Desserts.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA6D80762C76945F00D1D6F5 /* Fetch_DessertsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetch_DessertsApp.swift; sourceTree = "<group>"; };
 		BA6D807A2C76946200D1D6F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -92,6 +98,7 @@
 			children = (
 				BA6D808D2C76975200D1D6F5 /* MealListView.swift */,
 				BA6D808F2C76983F00D1D6F5 /* MealDetailView.swift */,
+				BA546DAF2C7EA428006608C4 /* MealTypeSelector.swift */,
 				BA546DAD2C7D5005006608C4 /* MealInstructions.swift */,
 			);
 			path = Controllers;
@@ -110,6 +117,7 @@
 			children = (
 				BA6D80952C7698C500D1D6F5 /* MealModel.swift */,
 				BA6D80972C7698D300D1D6F5 /* MealDetailModel.swift */,
+				BA546DB32C7ED571006608C4 /* MealTypeModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -119,6 +127,7 @@
 			children = (
 				BA6D80912C76989B00D1D6F5 /* MealListViewModel.swift */,
 				BA6D80932C7698AA00D1D6F5 /* MealDetailViewModel.swift */,
+				BA546DB12C7ED4FF006608C4 /* MealTypeViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -203,6 +212,8 @@
 			files = (
 				BA6D808C2C76971A00D1D6F5 /* MealListCell.swift in Sources */,
 				BA6D80942C7698AA00D1D6F5 /* MealDetailViewModel.swift in Sources */,
+				BA546DB02C7EA428006608C4 /* MealTypeSelector.swift in Sources */,
+				BA546DB22C7ED4FF006608C4 /* MealTypeViewModel.swift in Sources */,
 				BA6D808A2C7696F500D1D6F5 /* WebService.swift in Sources */,
 				BA6D80772C76945F00D1D6F5 /* Fetch_DessertsApp.swift in Sources */,
 				BA6D80902C76983F00D1D6F5 /* MealDetailView.swift in Sources */,
@@ -210,6 +221,7 @@
 				BA6D808E2C76975200D1D6F5 /* MealListView.swift in Sources */,
 				BA6D80962C7698C500D1D6F5 /* MealModel.swift in Sources */,
 				BA546DAE2C7D5005006608C4 /* MealInstructions.swift in Sources */,
+				BA546DB42C7ED571006608C4 /* MealTypeModel.swift in Sources */,
 				BA6D80922C76989B00D1D6F5 /* MealListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

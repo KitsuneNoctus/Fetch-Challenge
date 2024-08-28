@@ -28,7 +28,7 @@ struct MealListView: View {
         .onAppear {
             mealListViewModel.fetchMeals()
         }
-    }
+    }   
 }
 
 #Preview {
