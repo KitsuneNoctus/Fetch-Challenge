@@ -11,7 +11,9 @@ struct MealTypeSelector: View {
     
     @StateObject private var mealTypeVM: MealTypeViewModel = MealTypeViewModel()
     
-    @State private var selectedMealType = "Dessert"
+    @Binding var selectedMealType: String
+    
+    var action: (() -> Void)
     
     var body: some View {
         HStack {
@@ -19,8 +21,12 @@ struct MealTypeSelector: View {
             Picker("Please choose a color", selection: $selectedMealType) {
                 ForEach(mealTypeVM.mealTypes, id: \.strCategory) { meal in
                     Text(meal.strCategory)
+//                    action(meal.strCategory)
                 }
             }
+            .onTapGesture(perform: {
+                action()
+            })
         }
         .onAppear {
             mealTypeVM.fetchMealTypes()
@@ -28,6 +34,6 @@ struct MealTypeSelector: View {
     }
 }
 
-#Preview {
-    MealTypeSelector()
-}
+//#Preview {
+//    MealTypeSelector(selectedMealType: <#Binding<String>#>)
+//}
